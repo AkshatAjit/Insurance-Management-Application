@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Clients</title>
+    <link rel="stylesheet" href="/css/client/client-all.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Search client by ID
+            $('#search-btn').on('click', function() {
+                var clientId = $('#search-input').val();
+                window.location.href = '/clients/' + clientId;
+            });
+
+            // Delete client
+            $('.delete-btn').on('click', function() {
+                var clientId = $(this).attr('data-id');
+                if (confirm('Are you sure you want to delete client ' + clientId + '?')) {
+                    window.location.href = '/clients/';
+                }
+            });
+
+            // Create new client
+            $('#create-btn').on('click', function() {
+                window.location.href = '/clients/create';
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>All Clients</h1>
+<div>
+    <label for="search-input">Search by client ID:</label>
+    <input type="text" id="search-input" name="search-input">
+    <button id="search-btn">Search</button>
+</div>
+<div>
+    <button id="create-btn">Create Client</button>
+</div>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Date of Birth</th>
+        <th>Address</th>
+        <th>Contact Information</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="client : ${clients}">
+        <td th:text="${client.id}"></td>
+        <td th:text="${client.name}"></td>
+        <td th:text="${client.dateOfBirth}"></td>
+        <td th:text="${client.address}"></td>
+        <td th:text="${client.contactInfo}"></td>
+        <td>
+            <a th:href="@{/clients/update/__${client.id}__}" class="update-btn">Update</a>
+            <a th:href="@{/clients/delete/__${client.id}__}" class="delete-btn" data-id="${client.id}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/">Back to Home</a>
+</body>
+</html>

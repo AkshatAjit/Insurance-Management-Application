@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insurance Policy Details</title>
+    <link rel="stylesheet" href="/css/insurancePolicy/insurance-policy-details.css">
+</head>
+<body>
+    <h1>Insurance Policy Details</h1>
+    <table>
+        <tr>
+            <td>Policy Number:</td>
+            <td th:text="${policy.policyNumber}"></td>
+        </tr>
+        <tr>
+            <td>Type:</td>
+            <td th:text="${policy.type}"></td>
+        </tr>
+        <tr>
+            <td>Coverage Amount:</td>
+            <td th:text="${policy.coverageAmount}"></td>
+        </tr>
+        <tr>
+            <td>Premium:</td>
+            <td th:text="${policy.premium}"></td>
+        </tr>
+        <tr>
+            <td>Start Date:</td>
+            <td th:text="${policy.startDate}"></td>
+        </tr>
+        <tr>
+            <td>End Date:</td>
+            <td th:text="${policy.endDate}"></td>
+        </tr>
+        <tr>
+            <td>Client:</td>
+            <td th:text="${policy.client.name}"></td>
+        </tr>
+    </table>
+    <br>
+    <a href="/policies" th:href="@{/policies/}">Back to Policies</a>
+</body>
+</html>

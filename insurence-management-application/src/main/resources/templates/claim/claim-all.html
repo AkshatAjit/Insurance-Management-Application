@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>All Claims</title>
+	<link rel="stylesheet" type="text/css" href="/css/claim/claim-all.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			// Search claim by ID
+			$('#search-btn').on('click', function() {
+				var claimId = $('#search-input').val();
+				window.location.href = '/claims/' + claimId;
+			});
+
+		// Create new claim
+		$('#create-btn').on('click', function() {
+			window.location.href = '/claims/create';
+		});
+	});
+</script>
+</head>
+<body>
+	<h1>All Claims</h1>
+	<div>
+		<label for="search-input">Search by claim ID:</label>
+		<input type="text" id="search-input" name="search-input">
+		<button id="search-btn">Search</button>
+	</div>
+	<div>
+		<button id="create-btn">Create Claim</button>
+	</div>
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>Claim Number</th>
+			<th>Description</th>
+			<th>Claim Date</th>
+			<th>Claim Status</th>
+			<th>Insurance Policy ID</th>
+			<th>Actions</th>
+		</tr>
+		<tr th:each="claim : ${claims}">
+			<td th:text="${claim.id}"></td>
+			<td th:text="${claim.claimNumber}"></td>
+			<td th:text="${claim.description}"></td>
+			<td th:text="${claim.claimDate}"></td>
+			<td th:text="${claim.claimStatus}"></td>
+			<td th:text="${claim.policy.id}"></td>
+			<td>
+				<a th:href="@{/claims/__${claim.id}__/update}" class="update-btn">Update</a>
+				<a th:href="@{/claims/__${claim.id}__/delete}" class="delete-btn" data-id="${claim.id}">Delete</a>
+			</td>
+		</tr>
+	</table>
+	<a href="/">Back to Home</a>
+</body>
+</html>

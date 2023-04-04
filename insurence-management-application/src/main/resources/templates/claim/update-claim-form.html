@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Claim</title>
+    <link rel="stylesheet" href="/css/claim/update-claim-form.css">
+</head>
+<body>
+<h1>Update Claim</h1>
+<form action="#" th:action="@{/claims/{id}/update(id=${claim.id})}" th:object="${claim}" method="post">
+		<input type="hidden" th:field="*{id}">
+    <div>
+        <label for="claimNumber">Claim Number:</label>
+        <input type="text" id="claimNumber" th:field="*{claimNumber}" required>
+        <span th:if="${#fields.hasErrors('claimNumber')}" th:errors="*{claimNumber}">Claim Number Error</span>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        <input type="text" id="description" th:field="*{description}" required>
+        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</span>
+    </div>
+    <div>
+        <label for="claimDate">Claim Date:</label>
+        <input type="date" id="claimDate" th:field="*{claimDate}" required>
+        <span th:if="${#fields.hasErrors('claimDate')}" th:errors="*{claimDate}">Claim Date Error</span>
+    </div>
+    <div>
+        <label for="claimStatus">Claim Status:</label>
+        <select id="claimStatus" th:field="*{claimStatus}">
+            <option value="">Select Claim Status</option>
+            <option th:each="status : ${T(com.akshat.insurencemanagementapplication.model.ClaimStatus).values()}"
+                    th:value="${status}" th:text="${status}"></option>
+        </select>
+        <span th:if="${#fields.hasErrors('claimStatus')}" th:errors="*{claimStatus}">Claim Status Error</span>
+    </div>
+    <div>
+        <label for="policy">Policy:</label>
+        <select id="policy" th:field="*{policy.id}" required>
+            <option value="">Select Policy</option>
+            <option th:each="policy : ${policies}" th:value="${policy.id}" th:text="${policy.policyNumber}"></option>
+        </select>
+        <span th:if="${#fields.hasErrors('policy.id')}" th:errors="*{policy.id}">Policy Error</span>
+    </div>
+    <button type="submit">Update Claim</button>
+</form>
+</body>
+</html>

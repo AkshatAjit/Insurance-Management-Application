@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Claim Details</title>
+  <link rel="stylesheet" type="text/css" href="/css/claim/claim-details.css">
+</head>
+
+<body>
+	<h1>Claim Details</h1>
+	<table>
+		<tr>
+			<th>Claim Number:</th>
+			<td th:text="${claim.claimNumber}"></td>
+		</tr>
+		<tr>
+			<th>Description:</th>
+			<td th:text="${claim.description}"></td>
+		</tr>
+		<tr>
+			<th>Claim Date:</th>
+			<td th:text="${claim.claimDate}"></td>
+		</tr>
+		<tr>
+			<th>Claim Status:</th>
+			<td th:text="${claim.claimStatus}"></td>
+		</tr>
+		<tr>
+			<th>Policy ID:</th>
+			<td th:text="${claim.policy.id}"></td>
+		</tr>
+	</table>
+</body>
+</html>

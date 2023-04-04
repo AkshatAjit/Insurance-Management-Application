@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance Policies</title>
+    <link rel="stylesheet" href="/css/insurancePolicy/insurance-policy-all.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Search policy by ID
+            $('#search-btn').on('click', function() {
+                var policyId = $('#search-input').val();
+                window.location.href = '/policies/' + policyId;
+            });
+            // Delete policy
+            $('.delete-btn').on('click', function() {
+                var policyId = $(this).attr('data-id');
+                if (confirm('Are you sure you want to delete policy ' + policyId + '?')) {
+                    window.location.href = '/policies/'+policyId+'/delete';
+                }
+            });
+            // Create new policy
+            $('#create-btn').on('click', function() {
+                window.location.href = '/policies/create';
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Insurance Policies</h1>
+    <div>
+        <label for="search-input">Search by policy ID:</label>
+        <input type="text" id="search-input" name="search-input">
+        <button id="search-btn">Search</button>
+    </div>
+    <div>
+        <button id="create-btn">Create Policy</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Policy Number</th>
+                <th>Type</th>
+                <th>Coverage Amount</th>
+                <th>Premium</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Client</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="policy : ${policies}">
+                <td th:text="${policy.id}"></td>
+                <td th:text="${policy.policyNumber}"></td>
+                <td th:text="${policy.type}"></td>
+                <td th:text="${policy.coverageAmount}"></td>
+                <td th:text="${policy.premium}"></td>
+                <td th:text="${policy.startDate}"></td>
+                <td th:text="${policy.endDate}"></td>
+                <td th:text="${policy.client.name}"></td>
+                <td>
+                    <a th:href="@{/policies/__${policy.id}__/update}" class="update-btn">Update</a>
+                    <a th:href="@{/policies/__${policy.id}__/delete}" class="delete-btn" data-id="${policy.id}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/">Back to Home</a>
+</body>
+</html>

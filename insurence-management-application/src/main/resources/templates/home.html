@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insurance Management Application</title>
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+</head>
+<body>
+    <h1>Welcome to the Insurance Management Application</h1>
+    <p>Number of Clients: <span th:text="${numClients}"></span></p>
+    <p>Number of Claims: <span th:text="${numClaims}"></span></p>
+    <p>Number of Insurance Policies: <span th:text="${numPolicies}"></span></p>
+    <br>
+    <a href="/clients">View All Clients</a>
+    <a href="/claims">View All Claims</a>
+    <a href="/insurance-policies">View All Insurance Policies</a>
+</body>
+</html>

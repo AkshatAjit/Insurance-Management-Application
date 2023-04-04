@@ -1,0 +1,63 @@
+/* Typography */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #333;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #008CBA;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #005f6b;
+}
+
+/* Layout */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Content */
+.container {
+  max-width: 800px;
+  padding: 40px;
+  border: 2px solid #008CBA;
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: center;
+}
+
+/* Buttons */
+a {
+  display: inline-block;
+  background-color: #008CBA;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+  margin: 10px;
+}
+
+a:hover {
+  background-color: #005f6b;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Client</title>
+    <link rel="stylesheet" href="/css/client/create-client-form.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Create Client</h1>
+                <form action="/clients/create" method="post">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date of Birth:</label>
+                        <input type="date" name="dateOfBirth" id="dateOfBirth" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <textarea name="address" id="address" class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactInfo">Contact Information:</label>
+                        <input type="text" name="contactInfo" id="contactInfo" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

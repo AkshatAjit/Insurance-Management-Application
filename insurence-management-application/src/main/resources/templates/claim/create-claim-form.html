@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Create Claim Form</title>
+	<link rel="stylesheet" href="/css/claim/create-claim-form.css">
+	
+</head>
+<body>
+	<h2>Create a Claim</h2>
+	<form method="post" action="/claims/create">
+		<label for="claimNumber">Claim Number:</label>
+		<input type="text" id="claimNumber" name="claimNumber" required><br><br>
+		
+		<label for="description">Description:</label>
+		<input type="text" id="description" name="description" required><br><br>
+		
+		<label for="claimDate">Claim Date:</label>
+		<input type="date" id="claimDate" name="claimDate" required><br><br>
+		
+		<label for="claimStatus">Claim Status:</label>
+		<select id="claimStatus" name="claimStatus" required>
+			<option value="INITIATED">INITIATED</option>
+			<option value="IN_PROGRESS">IN_PROGRESS</option>
+			<option value="COMPLETED">COMPLETED</option>
+			<option value="DENIED">DENIED</option>
+		</select><br><br>
+		
+		<label for="policy">Select a Policy:</label>
+		<select class="form-control" id="policy" name="policy" required>
+			<option value="">Select a policy</option>
+			<th:block th:each="policy : ${policies}">
+				<option th:value="${policy.id}" th:text="${policy.id}"></option>
+			</th:block>
+		</select><br><br>
+		
+		<input type="submit" value="Create">
+	</form>
+</body>
+</html>

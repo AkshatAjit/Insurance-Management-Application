@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client Details</title>
+    <link rel="stylesheet" href="/css/client/client-details.css">
+</head>
+<body>
+    <h1>Client Details</h1>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td th:text="${client.name}"></td>
+        </tr>
+        <tr>
+            <td>Date of Birth:</td>
+            <td th:text="${client.dateOfBirth}"></td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td th:text="${client.address}"></td>
+        </tr>
+        <tr>
+            <td>Contact Information:</td>
+            <td th:text="${client.contactInfo}"></td>
+        </tr>
+    </table>
+    <br>
+    <a href="/clients" th:href="@{/clients/}">Back to Clients</a>
+</body>
+</html>

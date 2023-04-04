@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Insurance Policy</title>
+    <link rel="stylesheet" href="/css/insurancePolicy/update-insurance-policy.css">
+</head>
+<body>
+<div class="container">
+    <h1>Update Insurance Policy</h1>
+    <form method="POST" th:action="@{/policies/{id}/update(id=${policy.id})}" th:object="${policy}">
+        <div class="form-group">
+            <label for="policyNumber">Policy Number:</label>
+            <input type="text" id="policyNumber" name="policyNumber" th:field="*{policyNumber}" required>
+        </div>
+        <div class="form-group">
+            <label for="type">Type:</label>
+            <input type="text" id="type" name="type" th:field="*{type}" required>
+        </div>
+        <div class="form-group">
+            <label for="coverageAmount">Coverage Amount:</label>
+            <input type="number" id="coverageAmount" name="coverageAmount" th:field="*{coverageAmount}" required>
+        </div>
+        <div class="form-group">
+            <label for="premium">Premium:</label>
+            <input type="number" id="premium" name="premium" th:field="*{premium}" required>
+        </div>
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" th:field="*{startDate}" required>
+        </div>
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" th:field="*{endDate}" required>
+        </div>
+        <div class="form-group">
+            <label for="clientId">Client ID:</label>
+            <input type="number" id="clientId" name="clientId" th:field="*{client.id}" required>
+        </div>
+        <button type="submit" class="btn">Update Policy</button>
+    </form>
+</div>
+</body>
+</html>
